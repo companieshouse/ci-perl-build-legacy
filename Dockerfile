@@ -5,6 +5,7 @@ RUN yum install -y \
     gcc \
     gcc-c++ \
     tar \
+    openssl \
     perl-core \
     perl-devel \
     libxslt-devel-1.1.26
