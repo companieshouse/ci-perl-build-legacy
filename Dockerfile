@@ -22,4 +22,4 @@ RUN curl -L http://cpanmin.us -o /bin/cpanm \
 
 RUN cpanm Algorithm::Diff@1.1903 \
     Term::ANSIColor@2.02 \
-    Moose::Deprecated@2.0002
+    Moose@2.2013
