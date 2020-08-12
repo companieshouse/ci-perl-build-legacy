@@ -7,7 +7,6 @@ RUN yum install -y \
     tar \
     perl-core \
     perl-devel \
-    perl-Archive-Tar-1.58 \
     libxslt-devel-1.1.26
 
 RUN yum update -y \
