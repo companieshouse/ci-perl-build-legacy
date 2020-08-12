@@ -20,4 +20,6 @@ RUN yum update -y \
 RUN curl -L http://cpanmin.us -o /bin/cpanm \
     && chmod u+x /usr/local/bin/cpanm
 
-RUN cpanm Algorithm::Diff
+RUN cpanm Algorithm::Diff@1.1903 \
+    Term::ANSIColor@2.02 \
+    Moose::Deprecated@2.0002
