@@ -8,7 +8,7 @@ RUN yum install -y \
     gcc-c++ \
     tar \
     texlive-latex \
-    openssl \
+    openssl-devel \
     perl-core \
     libxslt-devel-1.1.26
 
