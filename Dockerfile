@@ -19,3 +19,5 @@ RUN yum update -y \
 
 RUN curl -L http://cpanmin.us -o /bin/cpanm \
     && chmod u+x /usr/local/bin/cpanm
+
+RUN cpanm Algorithm::Diff
