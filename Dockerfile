@@ -1,6 +1,7 @@
 FROM centos:6.7
 
 RUN yum install -y \
+    bzip2 \
     centos-release-scl \
     gcc \
     gcc-c++ \
