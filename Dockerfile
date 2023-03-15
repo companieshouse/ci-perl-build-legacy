@@ -26,5 +26,6 @@ RUN curl -L http://cpanmin.us -o /usr/local/bin/cpanm \
 
 RUN cpanm Algorithm::Diff@1.1903 \
     Term::ANSIColor@2.02 \
+    Test::Deep@1.130 \
     Moose@2.2013 \
     Devel::Declare@0.006022
