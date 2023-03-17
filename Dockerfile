@@ -2,6 +2,9 @@ FROM centos:6.7
 
 ARG node_js_version=v6.17.1
 ARG node_js_package=node-${node_js_version}-linux-x64
+ARG ruby_main_version=2.3
+ARG ruby_version=ruby-${ruby_main_version}.4
+ARG bundler_version=1.15.0
 
 RUN sed -i '/^mirrorlist/s/^/#/;/^#baseurl/{s/#//;s/mirror.centos.org\/centos\/$releasever/linuxsoft.cern.ch\/centos-vault\/6.7/}' /etc/yum.repos.d/CentOS-Base.repo
 
@@ -39,3 +42,12 @@ RUN	curl --tlsv1 -kLO https://nodejs.org/download/release/${node_js_version}/${n
     && tar -C /usr/local -zxf ${node_js_package}.tar.gz
 
 ENV PATH /usr/local/${node_js_package}/bin:$PATH
+
+RUN curl --tlsv1 -kLO https://cache.ruby-lang.org/pub/ruby/${ruby_main_version}/${ruby_version}.tar.gz -o ${ruby_version}.tar.gz \
+    &&	 tar -xzf ${ruby_version}.tar.gz \
+    &&	 cd ${ruby_version} \
+    &&	 ./configure --with-destdir=/ \
+    &&	 make \
+    &&	 make install
+
+RUN gem install bundler:${bundler_version}
