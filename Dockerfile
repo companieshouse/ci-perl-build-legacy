@@ -12,6 +12,7 @@ RUN yum install -y \
     zip \
     unzip \
     bzip2 \
+    git \
     centos-release-scl \
     expat-devel \
     gcc \
@@ -38,16 +39,20 @@ RUN cpanm Algorithm::Diff@1.1903 \
     Moose@2.2013 \
     Devel::Declare@0.006022
 
-RUN	curl --tlsv1 -kLO https://nodejs.org/download/release/${node_js_version}/${node_js_package}.tar.gz \
-    && tar -C /usr/local -zxf ${node_js_package}.tar.gz
+RUN curl --tlsv1 -kLO https://nodejs.org/download/release/${node_js_version}/${node_js_package}.tar.gz \
+    && tar -C /usr/local -zxf ${node_js_package}.tar.gz \
+    && rm -f ${node_js_package}.tar.gz
 
 ENV PATH /usr/local/${node_js_package}/bin:$PATH
 
 RUN curl --tlsv1 -kLO https://cache.ruby-lang.org/pub/ruby/${ruby_main_version}/${ruby_version}.tar.gz -o ${ruby_version}.tar.gz \
-    &&	 tar -xzf ${ruby_version}.tar.gz \
-    &&	 cd ${ruby_version} \
-    &&	 ./configure --with-destdir=/ \
-    &&	 make \
-    &&	 make install
+    && tar -xzf ${ruby_version}.tar.gz \
+    && rm -f ${ruby_version}.tar.gz \
+    && cd ${ruby_version} \
+    && ./configure --with-destdir=/ \
+    && make \
+    && make install
 
 RUN gem install bundler:${bundler_version}
+
+
