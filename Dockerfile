@@ -13,6 +13,7 @@ RUN yum install -y \
     unzip \
     bzip2 \
     git \
+    patch \
     centos-release-scl \
     expat-devel \
     gcc \
