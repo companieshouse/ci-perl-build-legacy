@@ -25,6 +25,7 @@ RUN yum install -y \
     texlive-latex \
     openssl-devel \
     perl-core \
+    mod_perl \
     libxslt-devel-1.1.26
 
 RUN sed -i '/^baseurl/s/mirror.centos.org\/centos\/6/linuxsoft.cern.ch\/centos-vault\/6.7/' /etc/yum.repos.d/{CentOS-SCLo-scl-rh.repo,CentOS-SCLo-scl.repo}
@@ -37,10 +38,13 @@ RUN yum update -y \
 RUN curl -L http://cpanmin.us -o /usr/local/bin/cpanm \
     && chmod u+x /usr/local/bin/cpanm
 
+RUN yum install -y \
+    epel-release
+
 RUN cpanm Algorithm::Diff@1.1903 \
     Term::ANSIColor@2.02 \
     Test::Deep@1.130 \
-    Moose@2.2013 \
+#    Moose@2.2013 \
     Devel::Declare@0.006022
 
 RUN curl --tlsv1 -kLO https://nodejs.org/download/release/${node_js_version}/${node_js_package}.tar.gz \
@@ -59,4 +63,8 @@ RUN curl --tlsv1 -kLO https://cache.ruby-lang.org/pub/ruby/${ruby_main_version}/
 
 RUN gem install bundler:${bundler_version}
 
+RUN sed -i '/^mirrorlist/s/^/#/;/^#baseurl/{s/#//;s/download/dl/;s/epel/archive\/epel/}' /etc/yum.repos.d/epel.repo
+
+RUN yum install -y \
+    libapreq2
 
