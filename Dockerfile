@@ -42,9 +42,10 @@ RUN yum install -y \
     epel-release
 
 RUN cpanm Algorithm::Diff@1.1903 \
+    Data::OptList@0.110 \
     Term::ANSIColor@2.02 \
     Test::Deep@1.130 \
-#    Moose@2.2013 \
+    Moose@2.2013 \
     Devel::Declare@0.006022
 
 RUN curl --tlsv1 -kLO https://nodejs.org/download/release/${node_js_version}/${node_js_package}.tar.gz \
