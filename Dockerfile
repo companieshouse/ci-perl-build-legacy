@@ -46,7 +46,9 @@ RUN cpanm Algorithm::Diff@1.1903 \
     Term::ANSIColor@2.02 \
     Test::Deep@1.130 \
     Moose@2.2013 \
-    Devel::Declare@0.006022
+    Devel::Declare@0.006022 \
+    ExtUtils::XSBuilder@0.28 \
+    Apache::Test@1.43
 
 RUN curl --tlsv1 -kLO https://nodejs.org/download/release/${node_js_version}/${node_js_package}.tar.gz \
     && tar -C /usr/local -zxf ${node_js_package}.tar.gz \
