@@ -17,6 +17,7 @@ RUN yum install -y \
     bzip2 \
     git \
     patch \
+    file \
     centos-release-scl \
     expat-devel \
     gcc \
@@ -26,7 +27,8 @@ RUN yum install -y \
     openssl-devel \
     perl-core \
     mod_perl \
-    libxslt-devel-1.1.26
+    libxslt-devel-1.1.26 \
+    httpd-devel
 
 RUN sed -i '/^baseurl/s/mirror.centos.org\/centos\/6/linuxsoft.cern.ch\/centos-vault\/6.7/' /etc/yum.repos.d/{CentOS-SCLo-scl-rh.repo,CentOS-SCLo-scl.repo}
 
@@ -48,7 +50,9 @@ RUN cpanm Algorithm::Diff@1.1903 \
     Moose@2.2013 \
     Devel::Declare@0.006022 \
     ExtUtils::XSBuilder@0.28 \
-    Apache::Test@1.43
+    Apache::Test@1.43 \
+    ModPerl::MM \
+    Apache2::Cookie@2.13
 
 RUN curl --tlsv1 -kLO https://nodejs.org/download/release/${node_js_version}/${node_js_package}.tar.gz \
     && tar -C /usr/local -zxf ${node_js_package}.tar.gz \
