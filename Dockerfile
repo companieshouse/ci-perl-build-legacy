@@ -75,3 +75,9 @@ RUN sed -i '/^mirrorlist/s/^/#/;/^#baseurl/{s/#//;s/download/dl/;s/epel/archive\
 RUN yum install -y \
     libapreq2
 
+# Install AWS CLI v2
+RUN curl --tlsv1 "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install && \
+    rm -rf ./aws && \
+    rm -f awscliv2.zip
