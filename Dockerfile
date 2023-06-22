@@ -8,10 +8,7 @@ ARG bundler_version=1.15.0
 
 RUN sed -i '/^mirrorlist/s/^/#/;/^#baseurl/{s/#//;s/mirror.centos.org\/centos\/$releasever/linuxsoft.cern.ch\/centos-vault\/6.7/}' /etc/yum.repos.d/CentOS-Base.repo
 
-RUN printf '[chpublic]\nname=CH Public RPMs\nbaseurl=http://s3-eu-west-1.amazonaws.com/ch-public-rpms/\nenabled=1\ngpgcheck=0' > /etc/yum.repos.d/chpublic.repo
-
 RUN yum install -y \
-    xerces-c-legacy \
     zip \
     unzip \
     bzip2 \
@@ -81,3 +78,7 @@ RUN curl --tlsv1 "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "
     ./aws/install && \
     rm -rf ./aws && \
     rm -f awscliv2.zip
+
+RUN curl --tlsv1 -O https://s3-eu-west-1.amazonaws.com/ch-public-rpms/xerces-c-legacy-2.7.0-3.x86_64.rpm && \
+    rpm -i xerces-c-legacy-2.7.0-3.x86_64.rpm && \
+    rm -f xerces-c-legacy-2.7.0-3.x86_64.rpm
