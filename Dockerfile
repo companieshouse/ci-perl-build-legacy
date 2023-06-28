@@ -6,6 +6,9 @@ ARG ruby_main_version=2.3
 ARG ruby_version=ruby-${ruby_main_version}.4
 ARG bundler_version=1.15.0
 
+ENV LC_ALL="en_US.UTF-8"
+ENV LANG="en_US.UTF-8"
+
 RUN sed -i '/^mirrorlist/s/^/#/;/^#baseurl/{s/#//;s/mirror.centos.org\/centos\/$releasever/linuxsoft.cern.ch\/centos-vault\/6.7/}' /etc/yum.repos.d/CentOS-Base.repo
 
 RUN yum install -y \
