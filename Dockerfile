@@ -84,4 +84,5 @@ RUN curl --tlsv1 "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "
 
 RUN curl --tlsv1 -O https://s3-eu-west-1.amazonaws.com/ch-public-rpms/xerces-c-legacy-2.7.0-3.x86_64.rpm && \
     rpm -i xerces-c-legacy-2.7.0-3.x86_64.rpm && \
-    rm -f xerces-c-legacy-2.7.0-3.x86_64.rpm
+    rm -f xerces-c-legacy-2.7.0-3.x86_64.rpm && \
+    umask 002
