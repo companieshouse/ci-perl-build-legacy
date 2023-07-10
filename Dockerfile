@@ -52,7 +52,10 @@ RUN cpanm Algorithm::Diff@1.1903 \
     ExtUtils::XSBuilder@0.28 \
     Apache::Test@1.43 \
     ModPerl::MM \
-    Apache2::Cookie@2.13
+    Apache2::Cookie@2.13 \
+    HTML::Entities@3.69 \
+    URI@1.71 \
+    && cpanm --force Compress::Zlib@2.069
 
 RUN curl --tlsv1 -kLO https://nodejs.org/download/release/${node_js_version}/${node_js_package}.tar.gz \
     && tar -C /usr/local -zxf ${node_js_package}.tar.gz \
